@@ -10,7 +10,7 @@ const MAX_MOOD_COUNT = 2
 
 const supabaseClient = createClient(
   import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_KEY
+  import.meta.env.VITE_SUPABASE_ANON_KEY
 )
 
 const userId = nanoid()
