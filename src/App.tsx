@@ -58,14 +58,16 @@ function App() {
     moodMeterChannel
       .on('presence', { event: 'sync' }, () => {
         const state = moodMeterChannel.presenceState<UserState>()
+        console.log(state)
         const newUserStates = Object.entries(state).reduce((acc, [, state]) => {
           acc.push({
-            userId: state[0].userId,
-            username: state[0].username,
-            moodList: state[0].moodList,
+            userId: state[0].userId ?? '',
+            username: state[0].username ?? '',
+            moodList: state[0].moodList ?? [],
           })
           return acc
         }, [] as UserState[])
+
         setUserStates(newUserStates)
       })
       .on('presence', { event: 'join' }, () => {})
